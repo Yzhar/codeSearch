@@ -1,0 +1,10 @@
+{ "class": "go.GraphLinksModel",
+  "nodeDataArray": [ 
+{"category":"Task", "text":"Drive a tractor", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-1, "loc":"-608.0814930413949 -213.7726961122391", "refs":[], "ctxs":[], "comment":null},
+{"category":"Task", "text":"Propel the tractor", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-2, "loc":"-604.0814930413949 -63.77269611223909", "refs":[], "ctxs":[], "comment":null},
+{"category":"Task", "text":"Climb into the cab", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-3, "loc":"-603.0814930413949 59.22730388776091", "refs":[], "ctxs":[], "comment":null}
+ ],
+  "linkDataArray": [ 
+{"category":"AchievedBy", "text":"achieved by", "routing":{"yb":"Normal", "oE":1}, "points":[-607.6623572381723,-198.05510349138947,-604.5006288446175,-79.4902887330887], "from":-1, "to":-2, "refs":[], "ctxs":[], "comment":null},
+{"category":"ConsistsOf", "text":"consists of", "routing":{"yb":"Normal", "oE":1}, "points":[-603.9537077355343,-48.05510349138949,-603.2092783472555,43.5097112669113], "from":-2, "to":-3, "refs":[], "ctxs":[], "comment":null}
+ ]}

@@ -1,0 +1,6 @@
+{ "class": "go.GraphLinksModel",
+  "nodeDataArray": [ 
+{"category":"Task", "text":"find a job", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-1, "loc":"-608.0814930413949 -213.7726961122391", "refs":[], "ctxs":[], "comment":null},
+{"category":"Task", "text":"prepare resume", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-2, "loc":"-607.0814930413949 -68.77269611223909", "refs":[], "ctxs":[], "comment":null}
+ ],
+  "linkDataArray": [ {"category":"ConsistsOf", "text":"consists of", "routing":{"yb":"Normal", "oE":1}, "points":[-607.9730958509062,-198.05510349138947,-607.1898902318835,-84.4902887330887], "from":-1, "to":-2, "refs":[], "ctxs":[], "comment":null} ]}

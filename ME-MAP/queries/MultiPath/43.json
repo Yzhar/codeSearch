@@ -1,0 +1,10 @@
+{ "class": "go.GraphLinksModel",
+  "nodeDataArray": [ 
+{"category":"Task", "text":"Installing preparation", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-1, "loc":"-196.8229217529297 -266.4479217529297", "refs":[], "ctxs":[], "comment":null},
+{"category":"Task", "text":"placing a modem", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-2, "loc":"-325.8229217529297 -100.44792175292969", "refs":[], "ctxs":[], "comment":null},
+{"category":"Task", "text":"Finding cable output", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-3, "loc":"221.1770782470703 -141.4479217529297", "refs":[], "ctxs":[], "comment":null}
+ ],
+  "linkDataArray": [ 
+{"category":"ConsistsOf", "text":"consists of", "routing":{"yb":"Normal", "oE":1}, "points":[-209.03719553660198,-250.73032913208004,-313.6086479692574,-116.1655143737793], "from":-1, "to":-2, "refs":[], "ctxs":[], "comment":null},
+{"category":"ConsistsOf", "text":"consists of", "routing":{"yb":"Normal", "oE":1}, "points":[-144.26329202880848,-250.73032913208004,168.6174485229492,-157.1655143737793], "from":-1, "to":-3, "refs":[], "ctxs":[], "comment":null}
+ ]}

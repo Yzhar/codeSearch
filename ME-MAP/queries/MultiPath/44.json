@@ -1,0 +1,10 @@
+{ "class": "go.GraphLinksModel",
+  "nodeDataArray": [ 
+{"category":"Task", "text":"Charge Smartphone", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-1, "loc":"-196.8229217529297 -266.4479217529297", "refs":[], "ctxs":[], "comment":null},
+{"category":"Task", "text":"Turn off phone", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-2, "loc":"-325.8229217529297 -100.44792175292969", "refs":[], "ctxs":[], "comment":null},
+{"category":"Task", "text":"Wait", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-3, "loc":"-69.82292175292969 -104.44792175292969", "refs":[], "ctxs":[], "comment":null}
+ ],
+  "linkDataArray": [ 
+{"category":"AchievedBy", "text":"achieved by", "routing":{"yb":"Normal", "oE":1}, "points":[-209.03719553660198,-250.73032913208004,-313.6086479692574,-116.1655143737793], "from":-1, "to":-2, "refs":[], "ctxs":[], "comment":null},
+{"category":"ConsistsOf", "text":"consists of", "routing":{"yb":"Normal", "oE":1}, "points":[-184.50110531559696,-250.73032913208004,-82.1447381902624,-120.1655143737793], "from":-1, "to":-3, "refs":[], "ctxs":[], "comment":null}
+ ]}

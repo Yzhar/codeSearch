@@ -1,0 +1,6 @@
+{ "class": "go.GraphLinksModel",
+  "nodeDataArray": [ 
+{"category":"Task", "text":"View Source Code", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-1, "loc":"-742.0814930413949 -258.7726961122391", "refs":[], "ctxs":[], "comment":null},
+{"category":"Task", "text":"web browser.", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-2, "loc":"-744.2783085321175 -118.77269611223909", "refs":[], "ctxs":[], "comment":null, "size":"142 31.43518524169922"}
+ ],
+  "linkDataArray": [ {"category":"ConsistsOf", "text":"consists of", "routing":{"yb":"Normal", "oE":1}, "points":[-742.3281262624403,-243.05510349138945,-744.0316753110721,-134.4902887330887], "from":-1, "to":-2, "refs":[], "ctxs":[], "comment":null} ]}

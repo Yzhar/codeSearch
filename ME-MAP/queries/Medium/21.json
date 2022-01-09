@@ -1,0 +1,10 @@
+{ "class": "go.GraphLinksModel",
+  "nodeDataArray": [ 
+{"category":"Task", "text":" getting Hex Code of a Color on computer", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-1, "loc":"-603.0814930413949 -213.7726961122391", "refs":[], "ctxs":[], "comment":null},
+{"category":"Task", "text":"image software", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-2, "loc":"-604.0814930413949 -63.77269611223909", "refs":[], "ctxs":[], "comment":null},
+{"category":"Task", "text":"downloading the software", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-3, "loc":"-603.0814930413949 59.22730388776091", "refs":[], "ctxs":[], "comment":null}
+ ],
+  "linkDataArray": [ 
+{"category":"AchievedBy", "text":"achieved by", "routing":{"yb":"Normal", "oE":1}, "points":[-603.2343942763396,-190.8375108705399,-603.9767090905892,-79.4902887330887], "from":-1, "to":-2, "refs":[], "ctxs":[], "comment":null},
+{"category":"ConsistsOf", "text":"consists of", "routing":{"yb":"Normal", "oE":1}, "points":[-603.9537077355343,-48.05510349138949,-603.2679579620591,36.292118646061695], "from":-2, "to":-3, "refs":[], "ctxs":[], "comment":null}
+ ]}

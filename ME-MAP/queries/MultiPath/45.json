@@ -1,0 +1,10 @@
+{ "class": "go.GraphLinksModel",
+  "nodeDataArray": [ 
+{"category":"Task", "text":"How to search in Search Engines", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-1, "loc":"-196.8229217529297 -266.4479217529297", "refs":[], "ctxs":[], "comment":null},
+{"category":"Task", "text":"choose words", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-2, "loc":"-325.8229217529297 -100.44792175292969", "refs":[], "ctxs":[], "comment":null},
+{"category":"Task", "text":"understand the domain", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-3, "loc":"-69.82292175292969 -104.44792175292969", "refs":[], "ctxs":[], "comment":null}
+ ],
+  "linkDataArray": [ 
+{"category":"ConsistsOf", "text":"consists of", "routing":{"yb":"Normal", "oE":1}, "points":[-178.84286912517786,-243.5127365112305,-82.14473819026242,-120.1655143737793], "from":-1, "to":-3, "refs":[], "ctxs":[], "comment":null},
+{"category":"ConsistsOf", "text":"consists of", "routing":{"yb":"Normal", "oE":1}, "points":[-214.64604763352727,-243.5127365112305,-313.6086479692574,-116.1655143737793], "from":-1, "to":-2, "refs":[], "ctxs":[], "comment":null}
+ ]}

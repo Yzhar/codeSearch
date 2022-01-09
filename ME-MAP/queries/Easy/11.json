@@ -1,0 +1,6 @@
+{ "class": "go.GraphLinksModel",
+  "nodeDataArray": [ 
+{"category":"Task", "text":"Remote sale Regulations", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-1, "loc":"-591.0814930413949 -277.7726961122391", "refs":[], "ctxs":[], "comment":null},
+{"category":"Task", "text":"cost returning by costumer", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-2, "loc":"-593.0814930413949 -168.7726961122391", "refs":[], "ctxs":[], "comment":null}
+ ],
+  "linkDataArray": [ {"category":"ConsistsOf", "text":"consists of", "routing":{"yb":"Normal", "oE":1}, "points":[-591.3698892362729,-262.05510349138945,-592.6606639543912,-191.70788135393832], "from":-1, "to":-2, "refs":[], "ctxs":[], "comment":null} ]}

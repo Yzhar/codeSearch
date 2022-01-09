@@ -1,0 +1,10 @@
+{ "class": "go.GraphLinksModel",
+  "nodeDataArray": [ 
+{"category":"Task", "text":"Pay taxes", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-1, "loc":"-196.8229217529297 -266.4479217529297", "refs":[], "ctxs":[], "comment":null},
+{"category":"Task", "text":"Check amount of money", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-2, "loc":"-292.8229217529297 -135.4479217529297", "refs":[], "ctxs":[], "comment":null},
+{"category":"Task", "text":"Submit payment one day before", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-3, "loc":"-78.82292175292969 -137.4479217529297", "refs":[], "ctxs":[], "comment":null}
+ ],
+  "linkDataArray": [ 
+{"category":"AchievedBy", "text":"achieved by", "routing":{"yb":"Normal", "oE":1}, "points":[-208.34115756668209,-250.73032913208004,-281.30468593917726,-151.1655143737793], "from":-1, "to":-2, "refs":[], "ctxs":[], "comment":null},
+{"category":"AchievedBy", "text":"achieved by", "routing":{"yb":"Normal", "oE":1}, "points":[-182.44558896796644,-250.73032913208004,-99.8023935244065,-160.38310699462892], "from":-1, "to":-3, "refs":[], "ctxs":[], "comment":null}
+ ]}

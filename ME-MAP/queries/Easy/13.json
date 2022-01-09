@@ -1,0 +1,6 @@
+{ "class": "go.GraphLinksModel",
+  "nodeDataArray": [ 
+{"category":"Task", "text":"how to get certificate for being be a coach", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-1, "loc":"-603.0814930413949 -213.7726961122391", "refs":[], "ctxs":[], "comment":null},
+{"category":"Task", "text":"Online course", "fill":"#ffffff", "stroke":"#000000", "strokeWidth":1, "key":-2, "loc":"-600.0814930413949 -68.77269611223909", "refs":[], "ctxs":[], "comment":null}
+ ],
+  "linkDataArray": [ {"category":"AchievedBy", "text":"achieved by", "routing":{"yb":"Normal", "oE":1}, "points":[-602.756301469929,-198.05510349138947,-600.4066846128608,-84.4902887330887], "from":-1, "to":-2, "refs":[], "ctxs":[], "comment":null} ]}
