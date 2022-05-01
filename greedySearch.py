@@ -1,4 +1,3 @@
-
 import nltk
 import json
 import pathlib
@@ -12,31 +11,33 @@ import os
 from Diagram import Diagram as class_diagram
 from nltk.corpus import stopwords
 import nltk
+
 nltk.download('wordnet_ic')
 nltk.download('wordnet')
 nltk.download('stopwords')
 nltk.download('en_core_web_lg')
 from similarity_maxtrix import matrix
-
 import spacy
+import Metrics
+import pandas as pd
 
 nlp = spacy.load("en_core_web_sm")
 comb_vertex = [
-    [0.1,0.1,0.1,0.1,0.1, 0.2, 0.3, 0.1, 0.2, 0.3, 0.1, 0.2, 0.3, 0.1, 0.2, 0.3],
-    [0.7,0.8,0.6,0.8,0.3, 0.2, 0.1, 0.3, 0.2, 0.1, 0.3, 0.2, 0.1, 0.3, 0.2, 0.1],
-    [0.5,0.7,0.9,0.5,0.2, 0.1, 0.3, 0.2, 0.1, 0.3, 0.2, 0.1, 0.3, 0.2, 0.1, 0.3],
-    [0.8,0.7,0.6,0.8,0.4, 0.5, 0.6, 0.4, 0.5, 0.6, 0.4, 0.5, 0.6, 0.4, 0.5, 0.6],
-    [0.9,0.9,0.9,0.9,0.6, 0.5, 0.4, 0.6, 0.5, 0.4, 0.6, 0.5, 0.4, 0.6, 0.5, 0.4],
-    [0.6,0.8,0.6,0.4,0.5, 0.6, 0.4, 0.5, 0.6, 0.4, 0.5, 0.6, 0.4, 0.5, 0.6, 0.4]
+    [0.1, 0.1, 0.1, 0.1, 0.1, 0.2, 0.3, 0.1, 0.2, 0.3, 0.1, 0.2, 0.3, 0.1, 0.2, 0.3],
+    [0.7, 0.8, 0.6, 0.8, 0.3, 0.2, 0.1, 0.3, 0.2, 0.1, 0.3, 0.2, 0.1, 0.3, 0.2, 0.1],
+    [0.5, 0.7, 0.9, 0.5, 0.2, 0.1, 0.3, 0.2, 0.1, 0.3, 0.2, 0.1, 0.3, 0.2, 0.1, 0.3],
+    [0.8, 0.7, 0.6, 0.8, 0.4, 0.5, 0.6, 0.4, 0.5, 0.6, 0.4, 0.5, 0.6, 0.4, 0.5, 0.6],
+    [0.9, 0.9, 0.9, 0.9, 0.6, 0.5, 0.4, 0.6, 0.5, 0.4, 0.6, 0.5, 0.4, 0.6, 0.5, 0.4],
+    [0.6, 0.8, 0.6, 0.4, 0.5, 0.6, 0.4, 0.5, 0.6, 0.4, 0.5, 0.6, 0.4, 0.5, 0.6, 0.4, 0.4, 0.5, 0.6, 0.4, 0.6]
 ]
 comb_edge = [
-    [0.9,0.8,0.7,0.1, 0.2, 0.3, 0.1, 0.2, 0.3, 0.1, 0.2, 0.3],
-    [0.7,0.8,0.6,0.3, 0.2, 0.1, 0.3, 0.2, 0.1, 0.3, 0.2, 0.1],
-    [0.5,0.7,0.9,0.2, 0.1, 0.3, 0.2, 0.1, 0.3, 0.2, 0.1, 0.3],
-    [0.8,0.7,0.6,0.4, 0.5, 0.6, 0.4, 0.5, 0.6, 0.4, 0.5, 0.6],
-    [0.8,0.7,0.6,0.6, 0.5, 0.4, 0.6, 0.5, 0.4, 0.6, 0.5, 0.4],
-    [0.9,0.9,0.9,0.5, 0.6, 0.4, 0.5, 0.6, 0.4, 0.5, 0.6, 0.4],
-    [0.6,0.8,0.6,0.1, 0.1, 0.1, 0.5, 0.5, 0.5, 0.8, 0.8, 0.8]
+    [0.9, 0.8, 0.7, 0.1, 0.2, 0.3, 0.1, 0.2, 0.3, 0.1, 0.2, 0.3],
+    [0.7, 0.8, 0.6, 0.3, 0.2, 0.1, 0.3, 0.2, 0.1, 0.3, 0.2, 0.1],
+    [0.5, 0.7, 0.9, 0.2, 0.1, 0.3, 0.2, 0.1, 0.3, 0.2, 0.1, 0.3],
+    [0.8, 0.7, 0.6, 0.4, 0.5, 0.6, 0.4, 0.5, 0.6, 0.4, 0.5, 0.6],
+    [0.8, 0.7, 0.6, 0.6, 0.5, 0.4, 0.6, 0.5, 0.4, 0.6, 0.5, 0.4],
+    [0.9, 0.9, 0.9, 0.5, 0.6, 0.4, 0.5, 0.6, 0.4, 0.5, 0.6, 0.4],
+    [0.6, 0.8, 0.6, 0.1, 0.1, 0.1, 0.5, 0.5, 0.6, 0.8, 0.6, 0.1, 0.1, 0.1, 0.5, 0.5]
 
 ]
 matrix_obj = matrix(comb_vertex[5], comb_edge[6])
@@ -56,21 +57,22 @@ def search_algorithm(target_graph, query_graph, th, k, hop):
                        [similarity[0][1]])])  # (target_vertex, query_vertex, similarity, is_visted)
 
     while len(open_list) != 0:
-
         state = open_list.pop()
         query_id = state[len(state) - 1][1]
         neighbors = query_graph.neighbors(query_id)
-        if not neighbors or query_graph.is_last(query_id):
+        if not neighbors:
             output_list.append(state)
             continue
+        # if not neighbors or query_graph.is_last(query_id):
+        #     output_list.append(state)
+        #     continue
 
         for vertex_query in neighbors:
 
             close_list_query.append(vertex_query)
             is_above, similar_nodes, is_visited = next_similar_node(target_graph, query_graph, vertex_query,
                                                                     state[len(state) - 1][1], state[len(state) - 1][0],
-                                                                    th,
-                                                                    state[len(state) - 1][3], k, hop, is_visited)
+                                                                    th, state[len(state) - 1][3], k, hop, is_visited)
             # next_similar_node(target_graph, query_graph, query_id, query_id_prev, target_id, th, is_visited_vertex)
 
             for vertex in similar_nodes:
@@ -158,9 +160,7 @@ def next_similar_node(target_graph, query_graph, query_id, query_id_prev, target
         label_similarity = get_sim_between_2_nodes(target_graph, key, query_graph, query_id, target_id, query_id_prev)
         edge_type_similarity = get_sim_between_2_edges(target_arc, query_arc)
         vertex_type_similarity = get_type_sim(target_type, query_type)
-
-        # similarity = (label_similarity*0.1 + edge_type_similarity*0.2 + vertex_type_similarity*0.7)
-        similarity = (label_similarity + edge_type_similarity + vertex_type_similarity)/3
+        similarity = (label_similarity + edge_type_similarity + vertex_type_similarity) / 3
 
         cloned_is_visited_vertex = copy.deepcopy(is_visited_vertex)
         cloned_is_visited_vertex.append(key)
@@ -190,6 +190,8 @@ def Average(lst):
 
 
 def get_type_sim(type1, type2):
+    # print("1"+type1)
+    # print("2"+type2)
     return Similarity_matrix_class[type1][type2]
 
 
@@ -208,6 +210,8 @@ def get_sim_between_2_nodes(target_graph, key, query_graph, query_id2, code_from
     except:
         print()
     return sim
+
+
 #
 def get_sim_between_2_nodes_a(target_graph, key, query_graph, query_id2):
     doc1 = target_graph.vertex_vectors[key]
@@ -235,8 +239,7 @@ def similarity_estimation(vertex_2, target_graph, query_graph):
     return [(max_similarity, node_id)]
 
 
-
-#----------------------------dani----------------------------
+# ----------------------------dani----------------------------
 # def similarity_estimation(vertex_2, target_graph, query_graph):
 #     # Start finding the most similar vertex in the code graph to the first vertex of a query
 #     max_similarity = 0
@@ -278,7 +281,8 @@ def read_results(results):
 # outputs = read_results(results)
 path = pathlib.Path(__file__).parent.absolute()
 maps = {}
-evaluation = pd.read_csv(str(path) + '\\evaluation.csv')
+# evaluation = pd.read_csv(str(path) + '\\evaluation.csv')
+# benchmark = pd.read_csv(str(path) + '\\check\\Benchmark.csv')
 ths = [0.45, 0.55, 0.60, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9]
 ks = [1, 2, 3, 4, 5]
 hops = [1, 0.9, 0.8, 0.7, 0.6]
@@ -298,37 +302,95 @@ hop = 1
 #         for hop in hops:
 upperbound = []
 data_result_search = {}
-for  i in range(len(comb_vertex)):
-    for j in range(len(comb_edge)):
-        matrix_obj = matrix(comb_vertex[i], comb_edge[j])
-        for queryname in os.listdir("check/queries/"):
-            output = []
-            query = class_diagram("check/queries/" + queryname, nlp)
-            key = queryname.split('.')[0]
-            data_result_search[key] = []
-            for key_map in maps.keys():
-                map_name = key_map
-                post = maps[key_map]
-                print(f'threshhold: {th}, k: {k}, hop:{hop} \n')
-                results = search_algorithm(post, query, th, k, hop)
-                outputs = read_results(results)
-                if outputs:
-                    for output in outputs:
-                        data_result_search[key].append((output, map_name))
-            print(
-                '------------------------------------------------------------------------------------------------------')
+# --------------------------------------------
+output = []
+queries = []
+for filename in os.listdir(str(path) + "\\check/queries"):
+    query_key = filename[:len(filename) - 5]
+    queries.append(query_key)
+    query = class_diagram("check/queries/" + f'{filename}', nlp)
 
-        avg_exact, avg_domain, avg_semantic, recall = evaluate(evaluation, data_result_search)
+    data_result_search[query_key] = []
+    for key_map in maps.keys():
+        map_name = key_map
+        post = maps[key_map]
+        # print(f'threshhold: {th}, k: {k}, hop:{hop} \n')
+        results = search_algorithm(post, query, th, k, hop)
+        outputs = read_results(results)
+        if outputs:
+            for output in outputs:
+                data_result_search[query_key].append((output, map_name))
+for k in data_result_search:
+    data_result_search[k] = sorted(data_result_search[k], key=lambda x: x[0][1], reverse=True)
+for k, v in data_result_search.items():
+    print("query number:" + k)
+    print("Relevant paths:")
+    for i in range(len(v)):
+        print("Project:" + v[len(v) - 1 - i][1])
+        print("Score:" + str(v[len(v) - 1 - i][0][1]))
+        print(v[len(v) - 1 - i][0][0])
+        print("#--------------------------------------------")
+
+print("Presenting evaluation of the result:")
+bm = pd.read_csv('Benchmark.csv')
+
+for q in range(5,20):
+    evaluation_df = pd.DataFrame(columns=['Query', 'Precision', 'Recall', 'F1'])
+    for index, row in bm.iterrows():
+        query_id = row[0]
+        query_text = row[1]
+        project = row[2]
+        path = [p.strip()[1:len(p.strip())-1] for p in row[3].split('~')]
+        relevant_path = [p.split(',')for p in path]
+        temp_list = []
+        for i, pr in enumerate(relevant_path):
+            for j, x in enumerate(pr):
+                relevant_path[i][j] = int(relevant_path[i][j])
+                # temp_list.append(int(pr))
+
+        # relevant_path = [[int(x[0]),int(x[1])] for x in relevant_path ]
+        retrieved_result = [x[0][0] for x in data_result_search[str(index + 1)]]
+
+        precision = Metrics.precision_at_k(relevant_path,retrieved_result,q)
+        recall = Metrics.recall_at_k(relevant_path,retrieved_result, q)
+        f1 = Metrics.f1(precision, recall)
+        evaluation_df.loc[len(evaluation_df.index)] = [query_id,precision,recall,f1]
+    evaluation_df.to_csv(f'evaluation{q}.csv')
+# --------------------------------------------
 
 
-        df_results['hops'].append(hop)
-        df_results['th'].append(th)
-        df_results['k'].append(k)
-        df_results['ExactMRR'].append(avg_exact)
-        df_results['DomainMrr'].append(avg_domain)
-        df_results['AvgSemantic'].append(avg_semantic)
-        df_results['Recall5'].append(recall)
-
+#
+# for i in range(len(comb_vertex)):
+#     for j in range(len(comb_edge)):
+#         matrix_obj = matrix(comb_vertex[i], comb_edge[j])
+#         for queryname in os.listdir("check/queries/"):
+#             output = []
+#             query = class_diagram("check/queries/" + queryname, nlp)
+#             query_key = queryname.split('.')[0]
+#             data_result_search[query_key] = []
+#             for key_map in maps.keys():
+#                 map_name = key_map
+#                 post = maps[key_map]
+#                 print(f'threshhold: {th}, k: {k}, hop:{hop} \n')
+#                 results = search_algorithm(post, query, th, k, hop)
+#                 outputs = read_results(results)
+#                 if outputs:
+#                     for output in outputs:
+#                         data_result_search[query_key].append((output, map_name))
+#             print(
+#                 '------------------------------------------------------------------------------------------------------')
+#
+#         avg_exact, avg_domain, avg_semantic, recall = evaluate(evaluation, data_result_search)
+#
+#
+#         df_results['hops'].append(hop)
+#         df_results['th'].append(th)
+#         df_results['k'].append(k)
+#         df_results['ExactMRR'].append(avg_exact)
+#         df_results['DomainMrr'].append(avg_domain)
+#         df_results['AvgSemantic'].append(avg_semantic)
+#         df_results['Recall5'].append(recall)
+# -------------------------------------------------------------
 
 # import pathlib
 # import random

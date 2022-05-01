@@ -5,6 +5,7 @@ import copy
 
 class Diagram:
     def __init__(self, path, nlp):
+        # print(path)
         with open(path) as f:
             # print(path)
             try:
@@ -36,18 +37,21 @@ class Diagram:
 
         # ----------------------------------------------
         for node in data["vertices"]:
-            self.graph[node["key"]] = []
+            # self.graph[node["key"]] = []
+            if node["key"] not in self.graph:
+                self.graph[node["key"]] = []
             self.vertex_info[node["key"]] = node["name"]
             self.vertex_type[node["key"]] = node["type"]
-            # text = self.get_nlp_sim(path, node["key"])
-            # print(f'text is :\n {text}')
-            # self.vertex_vectors[node["key"]] = nlp(text)
-
             self.vertex_vectors[node["key"]] = nlp(node['name'])
+
         #     need to add information about the attribute
         for edge in data["edges"]:
             text = self.get_nlp_sim(path, edge["from"], edge["to"])
-            self.graph[edge["from"]].append(edge["to"])
+            try:
+                self.graph[edge["from"]].append(edge["to"])
+            except KeyError as e:
+                self.graph[edge["from"]] = list()
+                self.graph[edge["from"]].append(edge["to"])
             self.edge_info[(edge["from"], edge["to"])] = [edge["type"], nlp(text)]
 
         self.oldEdges = copy.deepcopy(self.edge_info)
@@ -68,14 +72,14 @@ class Diagram:
         #             is_entered = True
         #     if not is_entered:
         #         self.max_id.append(id)
-        self.max_id = []
-        for id in self.vertex_info.keys():
-            is_entered = False
-            for conected in self.graph[id]:
-                if abs(id) < abs(conected):
-                    is_entered = True
-            if not is_entered:
-                self.max_id.append(id)
+        # self.max_id = []
+        # for id in self.vertex_info.keys():
+        #     is_entered = False
+        #     for conected in self.graph[id]:
+        #         if abs(id) < abs(conected):
+        #             is_entered = True
+        #     if not is_entered:
+        #         self.max_id.append(id)
     @staticmethod
     def get_nlp_sim(path, from_key, to_key):
         data = json.load(open(path))
@@ -108,11 +112,11 @@ class Diagram:
     #             text = text + ' ' + from_ + ' ' + edge_name + ' ' + to
     #     return text
 
-    def is_last(self, id):
-        if id in self.max_id:
-            return True
-        else:
-            return False
+    # def is_last(self, id):
+    #     if id in self.max_id:
+    #         return True
+    #     else:
+    #         return False
 
     # def is_last(self, id):
     #     if id == self.max_id:
